@@ -8,8 +8,56 @@ import "index.scss";
 import Button from "components/Button";
 
 import DayListItem from "components/DayListItem";
+import InterviewerListItem from "components/InterviewerListItem";
+import InterviewerList from "components/InterviewerList";
+
+import React, { Fragment } from 'react'
+
+import Show from "../src/components/Show";
+
+import Confirm from "../src/components/Confirm";
+
+import Status from "../src/components/Status";
+
+import Error from "../src/components/Error";
+
+
+
+
+
+
+
+// import Empty from '../src/components/Appointment/Empty';
+// import Header from 'src/components/Appointment/Header';
 
 // import DayList from "components/DayList";
+
+storiesOf("Error", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }],
+  })
+  .add("default", () => (
+    <Error message="Could not delete appointment." onClose={() => {}} />
+  ));
+
+storiesOf("Status", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }],
+  })
+  .add("default", () => <Status message="Deleting" />);
+
+
+storiesOf("Confirm", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }],
+  })
+  .add("default", () => (
+    <Confirm
+      message="Delete the appointment?"
+      onConfirm={() => console.log("Confirm clicked")}
+      onCancel={() => console.log("Cancel clicked")}
+    />
+  ))
 
 
 storiesOf("Button", module)
@@ -70,3 +118,208 @@ storiesOf("Button", module)
     .add("Wednesday", () => (
         <DayList days={days} day={"Wednesday"} setDay={action("setDay")} />
     ));
+
+    const interviewer = {
+      id: 1,
+      name: "Sylvia Palmer",
+      avatar: "https://i.imgur.com/LpaY82x.png"
+    };
+
+    storiesOf("Show", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }],
+  })
+  .add("default", () => (
+    <Show
+      student="Lydia Miller-Jones"
+      interviewer={interviewer}
+      onEdit={() => console.log("Edit clicked")}
+      onDelete={() => console.log("Delete clicked")}
+    />
+  ));
+    
+    storiesOf("InterviewerListItem", module)
+      .addParameters({
+        backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+      })
+      .add("Unselected", () => (
+        <InterviewerListItem
+          id={interviewer.id}
+          name={interviewer.name}
+          avatar={interviewer.avatar}
+        />
+      ))
+      .add("Selected", () => (
+        <InterviewerListItem
+          id={interviewer.id}
+          name={interviewer.name}
+          avatar={interviewer.avatar}
+          selected
+        />
+      ))
+      .add("Clickable", () => (
+        <InterviewerListItem
+          id={interviewer.id}
+          name={interviewer.name}
+          avatar={interviewer.avatar}
+          setInterviewer={action("setInterviewer")}
+        />
+      ));
+
+      const interviewers = [
+        { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
+        { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
+        { id: 3, name: "Mildred Nazir", avatar: "https://i.imgur.com/T2WwVfS.png" },
+        { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
+        { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
+      ];
+      
+      storiesOf("InterviewerList", module)
+        .addParameters({
+          backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+        })
+        .add("Initial", () => (
+          <InterviewerList
+            interviewers={interviewers}
+          />
+        ))
+        .add("Selected", () => (
+          <InterviewerList
+            interviewers={interviewers}
+            interviewer={3}
+          />
+        ))
+        .add("Clickable", () => (
+          <InterviewerListItem
+            name={interviewer.name}
+            avatar={interviewer.avatar}
+            setInterviewer={() => action("setInterviewer")(interviewer.id)}
+          />
+        ));
+
+// COPIED THIS FROM THE TEST. NOT SURE ABOUT INSTRUCITONS . BELOW. 
+
+        storiesOf("DayList", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
+  })
+  .add("Monday", () => (
+    <DayList days={days} value={"Monday"} onChange={action("setDay")} />
+  ))
+  .add("Tuesday", () => (
+    <DayList days={days} value={"Tuesday"} onChange={action("setDay")} />
+  ))
+  .add("Wednesday", () => (
+    <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
+  ));
+  storiesOf("InterviewerList", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  })
+  .add("Initial", () => (
+    <InterviewerList
+      interviewers={interviewers}
+    />
+  ))
+  .add("Selected", () => (
+    <InterviewerList
+      interviewers={interviewers}
+      value={3}
+    />
+  ))
+  .add("Clickable", () => (
+    <InterviewerList
+      interviewers={interviewers}
+      onChange={action("setInterviewer")}
+    />
+  ));
+
+  // copied from text agian. see above. below. 
+
+  storiesOf("InterviewerList", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  })
+  .add("Initial", () => (
+    <InterviewerList
+      interviewers={interviewers}
+    />
+  ))
+  .add("Selected", () => (
+    <InterviewerList
+      interviewers={interviewers}
+      value={3}
+    />
+  ))
+  .add("Clickable", () => (
+    <InterviewerList
+      interviewers={interviewers}
+      onChange={action("setInterviewer")}
+    />
+  ));
+
+  storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+
+  storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />);
+
+
+  // Addine new code below. should be goood. 
+
+  storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12pm" />)
+  .add("Create Appointment", () => <AppointmentForm />)
+  .add("Edit Appointment", () => {
+    const appointment = {
+      id: 1,
+      student: "Rory Schofield",
+      interviewer: "Jane Smith",
+      interviewerId: 3,
+      time: "1pm"
+    };
+    return <AppointmentForm appointment={appointment} />;
+  });
+  // setDay={action("setDay")} 
+  // causing error - should work. need.  above. 
+    // causing error - should work. need.  below. 
+
+
+  // .add("Appointment Empty", () => (
+  //   <Fragment>
+  //     <Appointment id={1} time="4pm" />
+  //     <Appointment time="5pm" />
+  //   </Fragment>
+  // ))
+  
+
+  // .add("Appointment Booked", () => (
+  //   <Fragment>
+  //     <Appointment
+  //       id={1}
+  //       time="4pm"
+  //       interview={{ student: "Lydia Miller-Jones", interviewer }}
+  //     />
+  //     <Appointment time="5pm" />
+  //   </Fragment>
+  // ))
+
+  // fix this code above. 
+  
+
+  
+
+
+      
