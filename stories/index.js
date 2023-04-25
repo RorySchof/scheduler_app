@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions";
 
 import "index.scss";
 
-import Button from "components/Button";
+import Button from "components/Appointment/Button";
 
 import DayListItem from "components/DayListItem";
 import InterviewerListItem from "components/InterviewerListItem";
@@ -13,13 +13,13 @@ import InterviewerList from "components/InterviewerList";
 
 import React, { Fragment } from 'react'
 
-import Show from "../src/components/Show";
+import Show from "../src/components/Appointment/Show";
 
-import Confirm from "../src/components/Confirm";
+import Confirm from "../src/components/Appointment/Confirm";
 
-import Status from "../src/components/Status";
+import Status from "../src/components/Appointment/Status";
 
-import Error from "../src/components/Error";
+import Error from "../src/components/Appointment/Error";
 
 
 

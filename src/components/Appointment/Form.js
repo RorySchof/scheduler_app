@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InterviewerList from "../InterviewerList";
-import Button from "../Button";
+import Button from "./Button";
 
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
