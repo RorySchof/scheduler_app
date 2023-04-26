@@ -13,7 +13,7 @@ import Status from "./Status";
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
-const SAVING = "SAVING"; // <=== new constant
+const SAVING = "SAVING"; 
 
 export default function Appointment(props) {
   console.log("index",props)
@@ -26,7 +26,7 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    transition(SAVING); // <=== transition to SAVING mode
+    transition(SAVING); 
     props.bookInterview(props.id, interview)
       .then(() => {
         transition(SHOW);
@@ -44,7 +44,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === CREATE && (
-        <Form onSave = {save} interviewers={[]} onCancel={back} />
+        <Form onSave = {save} interviewers={props.interviewers} onCancel={back} />
       )}
       {mode === SAVING && <Status message="Saving"/>} 
     </article>

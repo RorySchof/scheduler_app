@@ -7,7 +7,8 @@ import {
   getInterview
 } from "../helpers/selectors";
 import useApplicationData from "../hooks/useApplicationData";
-
+import "components/InterviewerList";
+// import "components/InterviewerListItem";
 import "components/Application.scss";
 
 export default function Application() {
@@ -48,6 +49,11 @@ export default function Application() {
     // });
   }
 
+  function handleChange(name){
+    setDay(name)
+
+  } 
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -58,7 +64,7 @@ export default function Application() {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={state.days} day={state.day} setDay={setDay} />
+          <DayList days={state.days} day={state.day} setDay={setDay} handleChange={handleChange}/>
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
