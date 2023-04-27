@@ -11,8 +11,9 @@ import "components/InterviewerList";
 // import "components/InterviewerListItem";
 import "components/Application.scss";
 
+
 export default function Application() {
-  const { state, setDay, cancelInterview } = useApplicationData();
+  const { state, setDay, cancelInterview, setState, bookInterview } = useApplicationData();
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
@@ -32,22 +33,42 @@ export default function Application() {
     );
   });
 
-  function bookInterview(id, interview) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
+  // function bookInterview(id, interview) {
+  //   console.log(id, interview, "ID STRING");
 
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
+  //   const appointment = {
+  //     ...state.appointments[id],
+  //     interview: { ...interview }
+  //   };
 
-    // setState({
-    //   ...state,
-    //   appointments
-    // });
-  }
+  //   const appointments = {
+  //     ...state.appointments,
+  //     [id]: appointment
+  //   };
+
+  //     setState({
+  //   ...state,
+  //   appointments
+  // });
+  // }
+
+  // function bookInterview(id, interview) {
+  //   const appointment = {
+  //     ...state.appointments[id],
+  //     interview: { ...interview }
+  //   };
+  
+  //   const appointments = {
+  //     ...state.appointments,
+  //     [id]: appointment
+  //   };
+  
+  //   setState({
+  //     ...state,
+  //     appointments
+  //   });
+  //   return true
+  // }
 
   function handleChange(name){
     setDay(name)

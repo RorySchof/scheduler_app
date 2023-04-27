@@ -14,6 +14,7 @@ export default function useApplicationData() {
   const bookInterview = (id, interview) => {
     return axios.put(`/api/appointments/${id}`, { interview })
       .then(() => {
+        console.log("success")
         const appointment = {
           ...state.appointments[id],
           interview: { ...interview }
@@ -70,8 +71,18 @@ export default function useApplicationData() {
     });
   }, []);
 
-  return { state, setDay, bookInterview, cancelInterview };
+  return { state, setState, setDay, bookInterview, cancelInterview };
 }
+
+
+
+
+
+
+
+
+
+
 // 
 // import { useState, useEffect } from "react";
 // import axios from "axios";

@@ -21,6 +21,17 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  // function save(name, interviewer) {
+  //   const interview = {
+  //     student: name,
+  //     interviewer
+  //   };
+  //   console.log(interview, "STRING INT")
+  //   props.bookInterview(props.id, interview);
+  //   // props.onSave();
+  // }
+ 
+
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -28,8 +39,12 @@ export default function Appointment(props) {
     };
     transition(SAVING); 
     props.bookInterview(props.id, interview)
-      .then(() => {
+      .then(() => { console.log("success")
         transition(SHOW);
+        
+      }).catch(error=>{
+        console.log(error)
+        
       })
   }
 
