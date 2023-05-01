@@ -34,4 +34,18 @@ npm test
 
 ```sh
 npm run storybook
+
 ```
+
+## Screen Shots
+
+!["Landing Page"](https://github.com/RorySchof/scheduler_app/blob/master/docs/Landing%20Page.png?raw=true)
+
+!["Adding a new appointment"](https://github.com/RorySchof/scheduler_app/blob/master/docs/Adding%20%20A%20New%20Appointment.png?raw=true)
+
+!["Deleting and confirming"](https://github.com/RorySchof/scheduler_app/blob/master/docs/Deleting%20and%20Confirming.png?raw=true)
+
+
+
+
+
