@@ -11,8 +11,7 @@ export default function useApplicationData() {
 
   const setDay = day => setState(prev => ({ ...prev, day }));
   const updateSpots = function(appointments, id){
-    //put our update spots here. 
-    // return new days array
+ 
   }
 
   const bookInterview = (id, interview) => {

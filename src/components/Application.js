@@ -1,3 +1,5 @@
+//Imports
+
 import React, { useState, useEffect } from "react";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
@@ -11,6 +13,7 @@ import "components/InterviewerList";
 // import "components/InterviewerListItem";
 import "components/Application.scss";
 
+// Application function.
 
 export default function Application() {
   const { state, setDay, cancelInterview, setState, bookInterview } = useApplicationData();
