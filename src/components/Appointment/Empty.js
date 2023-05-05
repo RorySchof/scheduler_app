@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Empty(props) {
+ function Empty(props) {
   return (
     <>
       <main className="appointment__add">
@@ -14,3 +14,5 @@ export default function Empty(props) {
     </>
   );
 }
+
+export default Empty;

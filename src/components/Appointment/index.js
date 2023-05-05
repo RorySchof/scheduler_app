@@ -26,7 +26,6 @@ const ERROR_DELETE = "ERROR_DELETE";
 //  Functions
 
 export default function Appointment(props) {
-  console.log("index", props)
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -41,10 +40,8 @@ export default function Appointment(props) {
         transition(EMPTY)
       })
       .catch(error => {
-        console.log(error)
         transition(ERROR_DELETE, true);
       })
-
   };
 
   function save(name, interviewer) {
@@ -55,19 +52,17 @@ export default function Appointment(props) {
     transition(SAVING);
     props.bookInterview(props.id, interview)
       .then(() => {
-        console.log("success")
         transition(SHOW);
 
       }).catch(error => {
-        console.log(error)
-        transition(ERROR_SAVE);
+        transition(ERROR_SAVE, true);
       })
 
 
   }
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment"  >
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (

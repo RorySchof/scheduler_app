@@ -1,36 +1,25 @@
-import React from "react";
+//Imports
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-
+import React, { Fragment } from 'react'
 import "index.scss";
-
 import Button from "components/Appointment/Button";
-
+import Appointment from "components/Appointment/index.js";
+import Empty from 'components/Appointment/Empty';
+import Header from 'components/Appointment/Header';
+import Show from "components/Appointment/Show";
+import Form from "components/Appointment/Form";
 import DayListItem from "components/DayListItem";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
-
-import React, { Fragment } from 'react'
-
-import Show from "../src/components/Appointment/Show";
-
+import DayList from "components/DayList";
 import Confirm from "../src/components/Appointment/Confirm";
-
 import Status from "../src/components/Appointment/Status";
-
 import Error from "../src/components/Appointment/Error";
 
+//Stories
 
-
-
-
-
-
-// import Empty from '../src/components/Appointment/Empty';
-// import Header from 'src/components/Appointment/Header';
-
-// import DayList from "components/DayList";
 
 storiesOf("Error", module)
   .addParameters({
@@ -46,7 +35,6 @@ storiesOf("Status", module)
   })
   .add("default", () => <Status message="Deleting" />);
 
-
 storiesOf("Confirm", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }],
@@ -58,7 +46,6 @@ storiesOf("Confirm", module)
       onCancel={() => console.log("Cancel clicked")}
     />
   ))
-
 
 storiesOf("Button", module)
   .addParameters({
@@ -197,9 +184,7 @@ storiesOf("Button", module)
           />
         ));
 
-// COPIED THIS FROM THE TEST. NOT SURE ABOUT INSTRUCITONS . BELOW. 
-
-        storiesOf("DayList", module)
+  storiesOf("DayList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
   })
@@ -234,8 +219,6 @@ storiesOf("Button", module)
     />
   ));
 
-  // copied from text agian. see above. below. 
-
   storiesOf("InterviewerList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -263,60 +246,46 @@ storiesOf("Button", module)
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
   .add("Appointment", () => <Appointment />)
-
-  storiesOf("Appointment", module)
-  .addParameters({
-    backgrounds: [{ name: "white", value: "#fff", default: true }]
-  })
-  .add("Appointment", () => <Appointment />)
-  .add("Appointment with Time", () => <Appointment time="12pm" />);
-
-
-  // Addine new code below. should be goood. 
-
-  storiesOf("Appointment", module)
-  .addParameters({
-    backgrounds: [{ name: "white", value: "#fff", default: true }]
-  })
-  .add("Appointment", () => <Appointment />)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
-  .add("Create Appointment", () => <AppointmentForm />)
-  .add("Edit Appointment", () => {
-    const appointment = {
-      id: 1,
-      student: "Rory Schofield",
-      interviewer: "Jane Smith",
-      interviewerId: 3,
-      time: "1pm"
-    };
-    return <AppointmentForm appointment={appointment} />;
-  });
-  // setDay={action("setDay")} 
-  // causing error - should work. need.  above. 
-    // causing error - should work. need.  below. 
+  .add("Create Appointment", () => <Form onCancel={action("onCanel")} interviewers={interviewers}  onSave={action ("onSave")}/>)
+  .add("Empty", () => <Empty onAdd={action("onAdd")}/>)
+
+  .add("Show", () => <Show onEdit={action("onEdit")} student="Rory" interviewer={interviewers[0]}  onDelete={action("onDelete")} />)
 
 
-  // .add("Appointment Empty", () => (
-  //   <Fragment>
-  //     <Appointment id={1} time="4pm" />
-  //     <Appointment time="5pm" />
-  //   </Fragment>
-  // ))
+  
+  .add("Confirm", () => <Confirm onConfirm={action("onConfirm")} onCancel={action("onCancel")} message="Confirmed" />)
+  .add("Status", () => <Status message="Status: loading"/>)
+  .add("Error", () => <Error onClose={action("onClose")} message="Error Message"  />)
+  .add("Edit", () => <Form onSave={action("onSave")} student="Rory" interviewer={interviewers[0]}  onCancel={action("onCanel") } interviewers={interviewers}  />)
+
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="4pm" />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
+  
+  .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment
+        id={1}
+        time="4pm"
+        interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
   
 
-  // .add("Appointment Booked", () => (
-  //   <Fragment>
-  //     <Appointment
-  //       id={1}
-  //       time="4pm"
-  //       interview={{ student: "Lydia Miller-Jones", interviewer }}
-  //     />
-  //     <Appointment time="5pm" />
-  //   </Fragment>
-  // ))
 
-  // fix this code above. 
+
+
+
+
+
+  
   
 
   

@@ -9,8 +9,6 @@ import {
   getInterview
 } from "../helpers/selectors";
 import useApplicationData from "../hooks/useApplicationData";
-import "components/InterviewerList";
-// import "components/InterviewerListItem";
 import "components/Application.scss";
 
 // Application function.
@@ -20,6 +18,8 @@ export default function Application() {
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
+
+  console.log(interviewers, "test")
 
   const appointments = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
@@ -31,14 +31,15 @@ export default function Application() {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
-        cancelInterview={() => cancelInterview(appointment.id)}
+        cancelInterview={cancelInterview}
+        {...appointment}
       />
     );
   });
 
-  function handleChange(name){
+  function handleChange(name) {
     setDay(name)
-  } 
+  }
 
   return (
     <main className="layout">
@@ -50,7 +51,7 @@ export default function Application() {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={state.days} day={state.day} setDay={setDay} handleChange={handleChange}/>
+          <DayList days={state.days} day={state.day} setDay={setDay} handleChange={handleChange} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
