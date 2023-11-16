@@ -4,14 +4,8 @@ Interview Scheduler is a single page appilcation (SPA) to track student intervie
 
 # Project Features
 
-Appointment days (Monday to Friday) are displayed and colour-coordinated depending on availability
-The days show the number of slots available
-A user can switch between days and see detailed information
-Booked and available slots are clearly differentiated
-A user can book interviews by typing in a student name and clicking on an interviewer from a list of interviewers
-A user can change the details of an existing interview by pressing the edit icon
-A user can cancel an existing interview, a pop-up message will ask to confirm the action before permanently deleting an interview
-Days display currently remaining spots and show updates after each modification
+
+The system showcases appointment days from Monday to Friday, with color-coded indications reflecting their availability. Each day presents the count of available slots. Users can easily navigate between days to access detailed information. Distinguishing between booked and available slots is visually clear. To book an interview, users can input a student's name and select an interviewer from a provided list. Modification of existing interviews is possible through the edit icon, and cancellation triggers a confirmation pop-up before permanently deleting the interview. The display dynamically updates, reflecting the current remaining spots and any changes made after each modification.
 
 
 ## Setup
